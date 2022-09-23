@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+.link-nav{
+    color: white;
+    text-decoration: none;
+    font-size: 20px; 
+    transition: 0.5s; 
+    font-family: 'Rubik Dirt', cursive;
+}
+.link-nav:hover{
+    color: rgb(240, 212, 134);
+}
+.trolley{
+    width: 30px;
+    height: 28px;
+}
+.count{
+    color: white;
+}
