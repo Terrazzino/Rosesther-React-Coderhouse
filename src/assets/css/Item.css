@@ -1,0 +1,17 @@
+.item{
+    border: 2px solid rgba(255, 217, 0, 0.233);
+    border-radius: 10px;
+    padding: 10px;
+    width: 90%;
+    transition:0.4s
+}
+
+.item:hover{
+    border: 2px solid rgb(255, 217, 0);
+    border-radius: 15px;
+    scale: 1.04;
+}
+.item img{
+    width: 100%;
+    border-radius: 10px;
+}

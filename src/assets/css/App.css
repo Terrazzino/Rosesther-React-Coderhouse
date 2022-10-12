@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 .App {
   text-align: center;
+  font-family: 'Rubik Dirt', cursive;
 }
 
 /* .App-logo {
@@ -46,4 +48,12 @@
 .Logo{
   width: 110px;
   height: auto;
+}
+
+.container-products{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  justify-items: center;
 }
