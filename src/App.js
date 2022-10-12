@@ -6,8 +6,7 @@ import NavBar from './components/NavBar';
 import CartWidget from './components/CartWidget'
 import ItemListContainer from './components/ItemListContainer';
 import UncontrolledExample from './components/Carrousel';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
 
 import producto1 from './assets/images/productos/1.jpg';
@@ -30,10 +29,6 @@ import producto17 from './assets/images/productos/17.jpg';
 import producto18 from './assets/images/productos/18.jpg';
 import producto19 from './assets/images/productos/19.jpg';
 import producto20 from './assets/images/productos/20.jpg';
-
-import { Inicio } from './components/navItems/Inicio';
-import { Historia } from './components/navItems/Historia';
-import { Contactos } from './components/navItems/Contactos';
 import ItemDetailContainer from './components/ItemDetailContainer';
 
 
@@ -70,20 +65,23 @@ function App() {
           <UncontrolledExample/>
         </header>
         <section className="NavBar">
-          <img src={logo} className="Logo" alt="logo"/>
-          <Link style={{ textDecoration: 'none' }} to="/"><NavBar name="Inicio"/></Link>
-          <Link style={{ textDecoration: 'none' }} to="/historia"><NavBar name="Historia"/></Link>
-          <Link style={{ textDecoration: 'none' }} to="/productos"><NavBar name="Productos"/></Link>
-          <Link style={{ textDecoration: 'none' }} to="/contactos"><NavBar name="Contactos y Redes"/></Link>
+        <Link to="/"><img src={logo} className="Logo" alt="logo"/></Link>
+          <NavBar name="Inicio"/>
+          <NavBar name="Historia"/>
+          <Link style={{textDecoration:"none"}} to="/"><NavBar name="Productos"/></Link>
+          <NavBar name="Contactos y Redes"/>
           <CartWidget/>
         </section>
         <Routes>
-          <Route path="/historia" element={<Historia/>}/>
-          <Route path="/contactos" element={<Contactos/>}/>
-          {/* ///////////////////// */}
-          <Route path="/" element={<Inicio/>}/>
-          <Route path="/productos" element={<ItemListContainer productos={productos}/>}/>
-          <Route path="/productos/details" element={<ItemDetailContainer/>}/>
+          <Route path="/" element={<ItemListContainer productos={productos}/>}/>
+          <Route path="/category/:style" element={<ItemListContainer/>}/>
+          <Route path="/item/:id" element={<ItemDetailContainer/>}/>
+
+          {/* <Route path="/category/doradaPampeana" element={<ItemListContainer/>}/>
+          <Route path="/category/golden" element={<ItemListContainer/>}/>
+          <Route path="/category/scottish" element={<ItemListContainer/>}/>
+          <Route path="/category/porter" element={<ItemListContainer/>}/>
+          <Route path="/category/ipa" element={<ItemListContainer/>}/> */}
         </Routes>
       </div>
     </BrowserRouter>

@@ -4,3 +4,13 @@
     text-align: center;
     font-size: 70px;
 }
+
+.activa{
+    color:rgb(255, 197, 51)
+}
+.desactiva{
+    color:rgba(176, 129, 12, 0.523)
+}
+li a:hover{
+    color:gold
+}

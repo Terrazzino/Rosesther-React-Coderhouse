@@ -1,7 +1,5 @@
 import React,{useState} from 'react';
-
-
-const ItemCount =(props)=>{
+const ItemCount =()=>{
     const [number,setNumber]=useState(0);
 
     const agregar=()=>{
