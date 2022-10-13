@@ -17,13 +17,13 @@ const ItemCount =()=>{
 
 
     return(
-          <div style={{background:"white",borderRadius:10, padding:5}}>
-            <div style={{display:"flex",justifyContent:"space-evenly",background:"white",borderRadius:10, padding:5}}>
+          <div style={{background:"white",borderRadius:10, padding:5,width:"50%", margin:"auto"}}>
+            <div style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly",background:"white",borderRadius:10, padding:5}}>
                 <button style={{width:30,height:30, borderRadius:"50%"}} onClick={restar}>-</button>
                 <b style={{color:"black",fontSize:20}}>{number}</b>
                 <button style={{width:30,height:30, borderRadius:"50%"}} onClick={agregar}>+</button>
             </div>
-            <button>Agregar al Carrito</button>
+            <button style={{width:"max-content",height:30, borderRadius:10, margin:"auto"}}>Agregar al Carrito</button>
           </div>
 
     )

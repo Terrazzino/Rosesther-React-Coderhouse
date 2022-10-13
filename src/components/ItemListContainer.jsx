@@ -1,14 +1,40 @@
-import React from 'react';
-import '../assets/css/ItemListContainer.css'
-import ItemList from './ItemList'
-import {NavLink,useParams} from 'react-router-dom'
+import React , {useEffect,useState} from 'react';
+import '../assets/css/ItemListContainer.css';
+import {ItemList} from './ItemList';
+import {NavLink,useParams} from 'react-router-dom';
+import {arrayProducts} from './datos';
 
-
-
-const ItemListContainer=(props)=>{  
-    // recibimos el props equivalente al array de productos, lo guardamos en una variable y lo enviamos por props al siguiente componente   
-    const productos = props.productos;
+export const ItemListContainer=()=>{     
     const {style} = useParams();
+    const [products,setProduct]=useState([]);
+
+    const peticionProductos = ()=>{
+        return new Promise ((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve(arrayProducts);
+                reject("No existe base de datos")
+            },2000)
+        })
+    }
+
+    const peticionAsincronicaProductos = async()=>{
+        try{
+            let listProducts = await peticionProductos();
+            if(style){
+                const filtrado = listProducts.filter(items=>items.style===style);
+                setProduct(filtrado);
+            }else{
+                setProduct(listProducts);
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    useEffect(()=>{
+        peticionAsincronicaProductos();
+    },[style]);
+
     return(
         <>
             <h2 className="speech" >EL SABOR DE LO BUENO</h2> 
@@ -20,10 +46,7 @@ const ItemListContainer=(props)=>{
                 <li><NavLink style={{textDecoration:"none",fontSize:20}} className={({isActive})=>isActive===true?'activa':'desactiva'} to="/category/Porter">Porter</NavLink></li>
                 <li><NavLink style={{textDecoration:"none",fontSize:20}} className={({isActive})=>isActive===true?'activa':'desactiva'} to="/category/Ipa">Ipa</NavLink></li>
             </ul>
-            {/* Enviamos el array de productos al componente ItemList */}
-            <ItemList productos={productos} filtro={style}/>
+            <ItemList list={products}/>
         </>
     )
 }
-
-export default ItemListContainer;

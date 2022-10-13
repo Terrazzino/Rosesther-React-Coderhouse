@@ -1,19 +1,21 @@
 import React from 'react';
-import ItemCount from './ItemCount'
+import ItemCount from './ItemCount';
+import '../assets/css/ItemDetails.css';
 
-const ItemDetails = (props)=>{
-    console.log(props);
+export const ItemDetails = ({filtId})=>{
+
     return(
-        <div className="ItemDetails" style={{background:"black",color:"white",width:"80%", margin:"auto"}}>
-            <img src={props.img} alt={props.style+" "+props.container}/>
+        <div className="ItemDetails">
+            <img src={filtId.img} alt={filtId.style+" "+filtId.container}/>
             <div>
-                <h1>{props.style}</h1>
-                <h3>{props.container}</h3>
-                <p>{props.details}</p>
+                <h1>{filtId.style}</h1>
+                <h3>{filtId.container}</h3>
+                <div>
+                <p>{filtId.details}</p>
+                <ItemCount/>
+                </div>
             </div>
-            <ItemCount/>
+
         </div>
     )
-};
-
-export default ItemDetails;
+}

@@ -1,28 +1,19 @@
 import React from "react";
 import '../assets/css/Item.css';
-import ItemDetailContainer from './ItemDetailContainer'
+import {Link} from 'react-router-dom';
 
 
 
-const Item=(props)=>{
-
-  const detalles =()=>{
-    let res = props.productos.find(el=>el.id===props.id);
-    let resFilter=[res];
-    resFilter.map((item)=><ItemDetailContainer img={item.img} style={item.style} container={item.container} detail={item.detail} />)
-  }
-
+export const Item=({producto})=>{
   return (
-
       <div className="item">
-        <img src={props.img} alt={props.style + " " +props.container}/>
-        <h2>{props.container}</h2>
-        <b>{props.liters} {props.unity}</b>
-        <h3>${props.price}</h3>
-        <button style={{borderRadius:20}} id={props.id} onClick={detalles}>Ver detalles</button>
+        <img src={producto.img} alt={producto.style + " " +producto.container}/>
+        <h2>{producto.container}</h2>
+        <b>{producto.liters} {producto.unity}</b>
+        <h3>${producto.price}</h3>
+        <Link to={`/item/${producto.id}`}>
+          <button style={{borderRadius:20}} id={producto.id} >Ver detalles</button>
+        </Link>
       </div>
-
   );
 }
-
-export default Item;
