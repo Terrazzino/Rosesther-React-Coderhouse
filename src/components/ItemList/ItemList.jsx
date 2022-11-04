@@ -1,7 +1,6 @@
 import React from 'react';
 import {Item} from './Item';
-import '../assets/css/ItemList.css';
-
+import '../../assets/css/ItemList.css';
 
 export const ItemList=({list})=>{
     const newList = [];

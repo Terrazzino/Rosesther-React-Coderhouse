@@ -1,8 +1,8 @@
 import Carousel from 'react-bootstrap/Carousel';
-import Banner1 from '../assets/images/banner_1.png';
-import Banner2 from '../assets/images/banner_2.png';
-import Banner3 from '../assets/images/banner_3.png';
-import '../assets/css/Carrousel.css'
+import Banner1 from '../../assets/images/banner_1.png';
+import Banner2 from '../../assets/images/banner_2.png';
+import Banner3 from '../../assets/images/banner_3.png';
+import '../../assets/css/Carrousel.css'
  
 function UncontrolledExample() {
   return (

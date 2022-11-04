@@ -1,10 +1,10 @@
 import React from 'react';
-import '../assets/css/NavBar.css'
+import '../../assets/css/NavBar.css'
 
 const NavBar = (props)=>{
     return(
         <>
-            <a href="#" className="link-nav">{props.name}</a>
+            <p className="link-nav">{props.name}</p>
         </>
     );
 }

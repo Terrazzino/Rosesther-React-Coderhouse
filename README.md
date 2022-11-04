@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+___
+# Rosesther Cerveceria Artesanal
+Sitio web destinado a la venta de productos de una cerveceria artesanal
+
+# Herramientas del Proyecto
+- ***React***: Maquetado HTML, estilo CSS y logica JS
+- ***React-Bootstrap***: Utilizamos para el carrousel del sitio
+- ***Firebase***: Base de datos de los productos con sus elementos
+___

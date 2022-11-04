@@ -5,6 +5,7 @@
     font-size: 20px; 
     transition: 0.5s; 
     font-family: 'Rubik Dirt', cursive;
+    cursor: pointer;
 }
 .link-nav:hover{
     color: rgb(240, 212, 134);

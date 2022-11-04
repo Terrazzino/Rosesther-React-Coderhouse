@@ -1,8 +1,6 @@
 import React from "react";
-import '../assets/css/Item.css';
+import '../../assets/css/Item.css';
 import {Link} from 'react-router-dom';
-
-
 
 export const Item=({producto})=>{
   return (

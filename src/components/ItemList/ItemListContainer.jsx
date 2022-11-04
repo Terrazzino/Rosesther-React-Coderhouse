@@ -1,40 +1,34 @@
 import React , {useEffect,useState} from 'react';
-import '../assets/css/ItemListContainer.css';
+import '../../assets/css/ItemListContainer.css';
 import {ItemList} from './ItemList';
 import {NavLink,useParams} from 'react-router-dom';
-import {arrayProducts} from './datos';
+import Spinner from 'react-bootstrap/Spinner'
+//firebase
+import {collection,getDocs,query,where} from 'firebase/firestore';
+import {db} from '../../utils/firebase';
 
-export const ItemListContainer=()=>{     
-    const {style} = useParams();
+export const ItemListContainer=()=>{ 
+
     const [products,setProduct]=useState([]);
-
-    const peticionProductos = ()=>{
-        return new Promise ((resolve,reject)=>{
-            setTimeout(()=>{
-                resolve(arrayProducts);
-                reject("No existe base de datos")
-            },2000)
-        })
-    }
-
-    const peticionAsincronicaProductos = async()=>{
-        try{
-            let listProducts = await peticionProductos();
-            if(style){
-                const filtrado = listProducts.filter(items=>items.style===style);
-                setProduct(filtrado);
-            }else{
-                setProduct(listProducts);
-            }
-        }catch(error){
-            console.log(error)
-        }
-    }
-
+    const [load,setLoad]=useState(true)
+    const {style} = useParams();
     useEffect(()=>{
-        peticionAsincronicaProductos();
-    },[style]);
-
+        const getData = async()=>{
+            const queryRef = style? query(collection(db,"items"),where("style","==",style)):query(collection(db,"items"));
+            const response = await getDocs(queryRef)
+            const documents = response.docs
+            const result = documents.map(item=>{
+                return({
+                    ...item.data(),
+                    id:item.id
+                })
+            });
+            setLoad(false);
+            setProduct(result)
+        }
+        getData()
+    },[style])
+    
     return(
         <>
             <h2 className="speech" >EL SABOR DE LO BUENO</h2> 
@@ -46,7 +40,7 @@ export const ItemListContainer=()=>{
                 <li><NavLink style={{textDecoration:"none",fontSize:20}} className={({isActive})=>isActive===true?'activa':'desactiva'} to="/category/Porter">Porter</NavLink></li>
                 <li><NavLink style={{textDecoration:"none",fontSize:20}} className={({isActive})=>isActive===true?'activa':'desactiva'} to="/category/Ipa">Ipa</NavLink></li>
             </ul>
-            <ItemList list={products}/>
+            {load?<Spinner style={{marginTop:"3%",width:"100%",height:"5px"}} animation="grow" variant="light" />:<ItemList list={products}/>}
         </>
     )
 }
